@@ -1,16 +1,16 @@
 import pandas as pd
 import numpy as np
 
-dosya_yolu = 'DataForPerceptron.xlsx' # excel dosyasından eğitim ve test verilerini yükle
-egitim_verisi = pd.read_excel(dosya_yolu, sheet_name='TRAINData')
-test_verisi = pd.read_excel(dosya_yolu, sheet_name='TESTData')
+dosyol = 'DataForPerceptron.xlsx' # excel dosyasından eğitim ve test verilerini yükle
+ever = pd.read_excel(dosyol, sheet_name='TRAINData') # eğitim 
+tver = pd.read_excel(dosyol, sheet_name='TESTData') # test 
 
-X_egitim = egitim_verisi.iloc[:, :-1].values # eğitim verileri için özellikleri ayır
-y_egitim = egitim_verisi.iloc[:, -1].values # etiketleri ayır
+X_egitim = ever.iloc[:, :-1].values # eğitim verileri için özellikleri ayır
+y_egitim = ever.iloc[:, -1].values # etiketleri ayır
 
 y_egitim = np.where(y_egitim == 2, -1, 1) # etiketleri -1 ve 1 olarak dönüştür
 
-X_test = test_verisi.iloc[:, :-1].values # test verilerinde özellikleri ayır
+X_test = tver.iloc[:, :-1].values # test verilerinde özellikleri ayır
 
 class Perceptron: # perceptron öğrenme algoritması
     def __init__(self, ogrenme_orani=0.1, max_iter=1000):
